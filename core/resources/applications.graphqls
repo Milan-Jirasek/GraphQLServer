@@ -1,0 +1,24 @@
+# Aktuálně nevím jak načíst
+
+type Query {
+    applications: [Application!]!
+    application(id: Int!): Application
+}
+
+type Mutation {
+    createApplication(input: ApplicationInput!): Application!
+    updateApplication(input: ApplicationInput!): Application!
+    deleteApplication(id: Int!): Int!
+}
+
+type Application {
+    id: Int!
+    name: String!
+    domain: String!
+}
+
+input ApplicationInput {
+    id: Int
+    name: String!
+    domain: String!
+}

@@ -1,24 +1,21 @@
 const express = require('express');
 const morgan = require('morgan');
-const express_graphql = require('express-graphql');
-const { buildSchema } = require('graphql');
-// GraphQL schema
-const schema = buildSchema(`
-    type Query {
-        message: String
-    }
-`);
-// Root resolver
-const root = {
-    message: () => 'Hello World!'
-};
-// Create an express server and a GraphQL endpoint
+const expressGraphQL = require('express-graphql');
+const applicationSchemaCreator = require('./core/resources/ApplicationSchemaCreator');
+const applicationQueryResolver = require('./core/src/application/resolver/ApplicationQueryResolver');
+
 const app = express();
+const queryResolver = new applicationQueryResolver();
+
+const root = {
+    application: queryResolver.application,
+    applications: queryResolver.applications
+};
 
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'));
 
-app.use('/graphql', express_graphql({
-    schema: schema,
+app.use('/graphql', expressGraphQL({
+    schema: applicationSchemaCreator.buildSchema(),
     rootValue: root,
     graphiql: true
 }));
