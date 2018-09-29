@@ -1,0 +1,33 @@
+{
+  "name": "graphqlserver",
+  "version": "1.0.0",
+  "description": "Testing Node.js GraphQL server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milan-Jirasek/GraphQLServer.git"
+  },
+  "keywords": [
+    "node",
+    "graphql"
+  ],
+  "author": "Milan Jirásek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Milan-Jirasek/GraphQLServer/issues"
+  },
+  "homepage": "https://github.com/Milan-Jirasek/GraphQLServer#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  }
+}
