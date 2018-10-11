@@ -21,13 +21,10 @@ module.exports = class ApplicationQueryResolver {
     };
 
     applications = () => {
-        console.log(this.tempData, this.testik);
-        console.log(this);
         return this.tempData;
     };
 
     application = (args) => {
-        console.log(this.tempData);
         const id = args.id;
         return this.tempData.filter(application => {
             return application.id == id;
