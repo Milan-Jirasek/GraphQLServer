@@ -1,12 +1,7 @@
 module.exports = class ApplicationQueryResolver {
-
     constructor() {
-        this.applications = this.applications.bind(this);
-        this.application = this.application.bind(this);
-    }
-    // TEMP DATA, will be removed
-    getData() {
-        return [
+        // TODO: will be removed after db connection
+        this.tempData = [
             {
                 id: 1,
                 name: 'Application 1',
@@ -23,16 +18,20 @@ module.exports = class ApplicationQueryResolver {
                 domain: 'http://app3.local'
             },
         ];
-    }
-
-    applications() {
-        return this.getData();
     };
 
-    application(args) {
+    applications = () => {
+        console.log(this.tempData, this.testik);
+        console.log(this);
+        return this.tempData;
+    };
+
+    application = (args) => {
+        console.log(this.tempData);
         const id = args.id;
-        return this.getData().filter(application => {
+        return this.tempData.filter(application => {
             return application.id == id;
-        })[0];
-    };
+
+            })[0];
+    }
 };
